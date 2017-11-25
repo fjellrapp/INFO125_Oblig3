@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="publications">
+
+                    <oneOrMore>
+                    <element name="publication">
+                        <choice>
+                          
+
+                        <element name="book">
+                            <element name="title">
+                                <text/>
+                            </element>
+                            <oneOrMore>
+                                <element name="author">
+                                    <text/>
+                                </element>
+                            </oneOrMore>
+                            <element name="publisher">
+                                <text/>
+                            </element>
+                            <element name="cited">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <element name="published">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="gYear"/>
+                            </element>
+                            <zeroOrMore>
+                                <element name="language">
+                                    <text/>
+                                </element>
+                            </zeroOrMore>
+                        </element>
+
+
+
+
+
+
+                        <element name="article">
+                            <element name="title">
+                                <text/>
+                            </element>
+                            <oneOrMore>
+                                <element name="author">
+                                    <text/>
+                                </element>
+                            </oneOrMore>
+                            <element name="journal">
+                                <text/>
+                            </element>
+                            <element name="volume">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <optional>
+                                <element name="number">
+                                    <data
+                                        datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                        type="string"/>
+                                </element>
+                            </optional>
+                            <element name="pages">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="string"/>
+                            </element>
+                            <element name="cited">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <element name="published">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <zeroOrMore>
+                                <element name="language">
+                                    <text/>
+                                </element>
+                            </zeroOrMore>
+                        </element>
+
+
+
+
+                        <element name="chapter">
+
+                            <element name="title">
+                                <text/>
+                            </element>
+                            <oneOrMore>
+                                <element name="author">
+                                    <text/>
+                                </element>
+                            </oneOrMore>
+                            <element name="collection">
+                                <text/>
+                            </element>
+                            <zeroOrMore>
+                                <element name="editors">
+                                    <text/>
+                                </element>
+                            </zeroOrMore>
+                            <element name="cited">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <element name="published">
+                                <data datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                    type="int"/>
+                            </element>
+                            <zeroOrMore>
+                                <element name="language">
+                                    <text/>
+                                </element>
+                            </zeroOrMore>
+                        </element>
+                            
+                        </choice>
+                    </element>
+                    </oneOrMore>
+        </element>
+    </start>
+</grammar>
