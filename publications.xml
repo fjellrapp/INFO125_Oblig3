@@ -1,5 +1,5 @@
 <!-- Gruppemedlemmer: KIV006, JIN007, ZAX007 -->
-<?xml-model href="../Documents/UIB/INFO125/Oblig/Main/Publications.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="Publications.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <publications>
 
 	<publication>

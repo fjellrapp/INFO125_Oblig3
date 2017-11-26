@@ -27,6 +27,16 @@ return $count
 
 <!-- 6. Find the year in which there are the most publications -->
 
+    <ul>
+   {
+   let $publication := //publication/*/published
+   for $set in distinct-values($publication)
+        let $count := count($publication[. eq $set])
+        order by $count descending
+        return  <li><year>{data($set)}</year>, <noOfPublications>{$count}</noOfPublications></li>
+}
+</ul>
+
 
 
 <!-- 7. Find the publications in which "C List" appears as a third author -->
@@ -66,7 +76,15 @@ return <li>{data($x), count($x)}</li>
 }
 </ul>
 
-
-for $x in distinct-values(doc("publications (1).xml") /publications/*/published)
-order by count($x)
-return $x
+<!-- 12.  Create a query that generates a list in HTML of the different distinct journals that occur
+in the XML document together with the number of publications that have been
+published in each. List them in ascending order by number of publications.-->
+<ul>
+{
+   let $journal := //publication/article/journal
+   for $set in distinct-values($journal)
+        let $count := count($journal[. eq $set])
+        order by $count ascending
+   return <li>{data($set), $count}</li>
+}
+</ul>
