@@ -1,5 +1,5 @@
-<!--//flere instanser fremstår som bøker eller kapitler, men viser seg å være artikkel etter et kjapt google søk. derfor er det noe som ser ut som bøker som er tagget med <article> </article>-->
-<?xml-model href="Publications.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!-- Gruppemedlemmer: KIV006, JIN007, ZAX007 -->
+<?xml-model href="../Documents/UIB/INFO125/Oblig/Main/Publications.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <publications>
 
 	<publication>
