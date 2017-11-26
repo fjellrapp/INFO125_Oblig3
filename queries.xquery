@@ -13,9 +13,15 @@ return $lang
 
 <!-- 4.  Return the highest cited publication published before the year 2010 -->
 
+<!-- liste av de høyest siterte publikasjonene -->
 for $cited in //publication/*/cited
 where $cited //..[published < 2010]
 return <ul><li>{$cited} , {$cited/../title}</li></ul>
+
+<!-- kun det høyeste tallet -->
+max(for $cited in //publication/*/cited
+where $cited //..[published < 2010]
+return $cited)
 
 <!-- 5. Find the number of publications published in 2009 -->
 
@@ -54,7 +60,7 @@ let $publication := //publication/*[cited>300]
    where $publication
    return 
    <ul>
-   <li>{$cited/title} </li> <li> {$cited/cited} </li> 
+   <li>{$cited/title} {$cited/cited} </li> 
 </ul>
 
 <!-- 10. Return the names of the journals that have published an article with at least three authors-->
@@ -64,27 +70,29 @@ where $x/author[3]
 order by $x/journal
 return $x/journal
 
+<!-- med forfattere -->
+
+for $x in //publication/article
+where $x/author[3]
+order by $x/journal
+return <ul><li>{$x/journal}</li><li>{$x/author} </li></ul>
+
 
 <!-- 11.  Create an XML from the publications separating them based on the position where “C
 List" occurs as an author and then into journals, books and collections. -->
 
-11. <ul>
-{
-for $x in distinct-values(doc("publications.xml") /publications/article/journal)
-order by count($x)
-return <li>{data($x), count($x)}</li>
-}
-</ul>
+
 
 <!-- 12.  Create a query that generates a list in HTML of the different distinct journals that occur
 in the XML document together with the number of publications that have been
 published in each. List them in ascending order by number of publications.-->
 <ul>
 {
-   let $journal := //publication/article/journal
-   for $set in distinct-values($journal)
-        let $count := count($journal[. eq $set])
-        order by $count ascending
-   return <li>{data($set), $count}</li>
+let $journal := //publication/article/journal
+for $set in distinct-values($journal)
+let $count := count($journal[. eq $set])
+order by $count ascending
+return <li><journal>{data($set)}</journal>
+<noPublished>{$count}</noPublished></li>
 }
 </ul>
